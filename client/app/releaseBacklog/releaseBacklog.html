@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+  <!--search & alert display area -->
+  <div class="container row" ng-controller="ReleaseBacklogCtrl">
+    <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-5 col-lg-offset-5 col-xs-6 col-sm-4 col-md-4 col-lg-4">
+      <!--searchbox -->
+      <div class="input-group input-group-sm" style="padding-top:30px;">
+        <input type="text" class="form-control" placeholder="Search by task, description or developer..."
+        ng-model="searchText">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div></br><!-- /input-group -->
+      <!--/searchbox -->
+      <!--alertbox -->
+      <div class="alert alert-warning text-center" data-ng-hide="!tasks.$resolved || tasks.length">
+      	No Tasks yet, why don't you <a ui-sref="admin.addTask">create one</a>?
+       </div>
+      </br>
+      <!--/alertbox -->
+    </div>
+  </div>
+  <!--/search & alert display area -->
+  <div class="container">
+    <div class="row">
+    <!--leftSideNavigation-->
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <ul class="nav nav-pills nav-stacked on-click-make-active">
+        <!--Loads releaseBacklog state, doesn't containanything right now -->
+        <li><a ui-sref="releaseBacklog.thisReleaseBacklog">ReleaseBacklog</a></li>
+        <!--Loads sprints state, doesn't containanything right now -->
+        <li><a ui-sref="releaseBacklog.sprints">Sprints</a> </li>
+        <!--Loads currentSprint state -->
+        <li><a ui-sref="releaseBacklog.currentSprint">Current sprint</a></li>
+        <!--Loads myTasks state -->
+        <li class="active"><a ui-sref="releaseBacklog.myTasks">My tasks</a></li>
+      </ul>
+    </div>
+    <!--/leftSideNavigation-->
+    <!--anyUserCentralView-->
+    <div class="col-xs-9 border-left">
+      <div ui-view> </div>
+    </div>
+    <!--anyUserCentralView-->
+  </div>
+</div>

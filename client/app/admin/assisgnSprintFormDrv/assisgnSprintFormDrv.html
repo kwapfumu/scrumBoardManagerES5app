@@ -1,0 +1,35 @@
+<section data-ng-controller="AdminEditTaskCtrl">
+  <div class="modal-header">
+    <h4 class="modal-title">Assign: {{task.taskName}} to sprint {{task.SprintInfo.sprintNumber}}</h4>
+  </div>
+  <div class="modal-body">
+        <form name="assignSprintForm">
+            <fieldset>
+              <div class="form-group">
+                <div data-ng-show="error" class="text-center text-danger">
+                  <div class="alert alert-danger" role="alert">
+                    <strong data-ng-bind="error"></strong>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Sprint Number: {{task.sprintInfo.sprintNumber}}</label>
+                <input type="number" class="form-control" data-ng-model="task.SprintInfo.sprintNumber" required/>
+              </div>
+              <div class="form-group">
+                <label>Start Date: {{task.sprintInfo.startDate}}</label>
+                <input type="date" class="form-control" data-ng-model="task.SprintInfo.startDate" required/>
+              </div>
+              <div class="form-group">
+                <label>End Date: {{task.sprintInfo.endDate}}</label>
+                <input type="date" class="form-control" data-ng-model="task.SprintInfo.endDate" required />
+              </div>
+            </fieldset>
+        </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" ng-click="AdminEditTaskCtrl.update(task);ok()"
+    ng-disabled="assignSprintForm.$invalid">Submit</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+  </div>
+</section>

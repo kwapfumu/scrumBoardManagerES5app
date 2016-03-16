@@ -1,0 +1,23 @@
+<section>
+  <h1 class="page-header">Release Backlog
+    <ul class="nav navbar-nav navbar-right" ng-controller="AdminReleaseBacklogCtrl">
+      <li><h3><button type="button" class="btn btn-info btn-xs" ng-click="listTasks()">list tasks</button></h3></li>
+      <li><h3><a ui-sref="admin.addTask">add task</a></h3></li>
+      </ul>
+  </h1>
+  <div class="row placeholders"  ng-controller="ReleaseBacklogCtrl">
+    <!--backlogPnel-->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tasks</h3>
+      </div>
+      <!--releaseBacklog Panel-body-->
+      <div class="panel-body list-group">
+        <!--Inner panel/task panel-->
+        <div data-task-Drv></div>
+        <!--/Inner panel/task panel-->
+      </div><!--/releaseBacklog Panel-body-->
+    </div><!--/releaseBacklog Panel-->
+    <!--/backlogPnel-->
+  </div>
+</section>

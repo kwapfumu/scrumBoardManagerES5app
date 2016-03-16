@@ -1,0 +1,87 @@
+<section class="col-xs-8 col-sm-8 col-md-8 col-lg-8" ng-controller="AdminAddTaskCtrl">
+  <h4 class="modal-title">New Task</h4>
+  <form name="createTaskForm" class="form-horizontal" novalidate data-ng-submit="AdminAddTaskCtrl.createTask(newTask);ok()">
+    <div class="form-group">
+      <div data-ng-show="error" class="text-center text-danger">
+        <div class="alert alert-danger" role="alert">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.taskName.$dirty && createTaskForm.taskName.$invalid}">
+      <div class="col-sm-10">
+        <input type="text" name="taskName" data-ng-model="newTask.taskName" class="form-control" id="taskName" placeholder="task name"
+        data-ng-required="true" data-ng-minlength="7" data-ng-maxlength="10" data-ng-pattern="textPattern">
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.taskName.$dirty && createTaskForm.taskName.$error.required">Taskname is mandatory</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.taskName.$dirty && createTaskForm.taskName.$error.pattern">Taskname should be a text</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.taskName.$dirty && createTaskForm.taskName.$error.minlength">Taskname should be at least 7 characters long</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.taskName.$dirty && createTaskForm.taskName.$error.maxlength">Taskname should be max 10 characters long</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.taskDescription.$dirty && createTaskForm.taskDescription.$invalid}">
+      <div class="col-sm-10">
+        <textarea name="taskDescription" data-ng-model="newTask.taskDescription" class="form-control" rows="2" id="taskDescription"
+        placeholder="taskDescription" data-ng-required="true"></textarea>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.taskDescription.$dirty && createTaskForm.taskDescription.$invalid">You need to add the task description!</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.storyPoints.$dirty && createTaskForm.storyPoints.$invalid}">
+      <div class="col-sm-10">
+        <input type="number" name="storyPoints" data-ng-model="newTask.storyPoints" class="form-control" id="storyPoints" placeholder="storyPoints"
+        data-ng-required="true">
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.storyPoints.$dirty && createTaskForm.storyPoints.$invalid">storyPoints is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.developer.$dirty && createTaskForm.developer.$invalid}">
+      <div class="col-sm-10">
+        <input name="developer" type="text" data-ng-model="newTask.developer" class="form-control" id="developer" placeholder="developer"
+        data-ng-required="true" data-ng-minlength="3" data-ng-maxlength="10" data-ng-pattern="textPattern">
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.developer.$dirty && createTaskForm.developer.$invalid">developer name is mandatory</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.developer.$dirty && createTaskForm.developer.$error.pattern">developer should be a text</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.developer.$dirty && createTaskForm.developer.$error.minlength">developer should be at least 3 characters long</span>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.developer.$dirty && createTaskForm.developer.$error.maxlength">developer should be max 10 characters long</span>
+      </div>
+    </div>
+    <!--<div class="form-group" ng-class="{'has-error':createTaskForm.backlogName.$dirty && createTaskForm.backlogName.$invalid}">
+      <input name="backlogName" type="text" data-ng-model="newTask.backlogName" class="form-control" id="backlogName" placeholder="backlog Name"
+      ng-required="true">
+      <span class="error-message col-md-offset-2" ng-show="createTaskForm.backlogName.$dirty && createTaskForm.backlogName.$invalid">backlogName is mandatory</span>
+    </div>-->
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.state.$dirty && createTaskForm.state.$invalid}">
+      <div class="controls col-sm-10">
+        <select name="state" data-ng-model="newTask.state" class="form-control" id="state" data-ng-options="state.name for state in states" data-ng-required="true">
+          <option value="">-- choose state --</option>
+        </select>
+        <span class="error-message col-md-offset-2" data-ng-show="createTaskForm.state.$dirty && createTaskForm.state.$invalid">state is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.sprintInfo.sprintNumber.$dirty && createTaskForm.sprintInfo.sprintNumber.$invalid}">
+      <div class="col-sm-10">
+        <input type="number" name="sprintInfo.sprintNumber" data-ng-model="newTask.sprintInfo.sprintNumber" class="form-control" id="sprintNumber"
+        placeholder="sprint number" data-ng-required="true">
+        <span class="error-message col-md-offset-2"
+        data-ng-show="createTaskForm.sprintInfo.sprintNumber.$dirty && createTaskForm.sprintInfo.sprintNumber.$invalid">sprintNumber is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.sprintInfo.startDate.$dirty && createTaskForm.sprintInfo.startDate.$invalid}">
+      <div class="col-sm-10">
+        <input type="date" name="sprintInfo.startDate" data-ng-model="newTask.sprintInfo.startDate" class="form-control" data-ng-required="true"
+        id="startDate" placeholder="start date">
+        <span class="error-message col-md-offset-2"
+        data-ng-show="createTaskForm.sprintInfo.startDate.$dirty && createTaskForm.sprintInfo.startDate.$invalid">startdate is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{'has-error':createTaskForm.sprintInfo.endDate.$dirty && createTaskForm.sprintInfo.endDate.$invalid}">
+      <div class="col-sm-10">
+        <input type="date" name="sprintInfo.endDate" data-ng-model="newTask.sprintInfo.endDate" class="form-control" id="endDate"
+        placeholder="end date" data-ng-required="true">
+        <span class="error-message col-md-offset-2"
+        data-ng-show="createTaskForm.sprintInfo.endDate.$dirty && createTaskForm.sprintInfo.endDate.$invalid">endDate is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10">
+      <button type="submit" class="btn btn-warning" data-ng-disabled="createTaskForm.$invalid">Save</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="cancel()">Cancel</button>
+    </div>
+  </form>
+</section>

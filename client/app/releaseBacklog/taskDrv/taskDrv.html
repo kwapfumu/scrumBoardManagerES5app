@@ -1,0 +1,25 @@
+<div class="panel panel-default col-xs-6 col-sm-2 placeholder taskPanelExtra-space" id="taskPanel"
+data-ng-repeat="task in tasks | filter:searchText | orderBy:'-task.taskName':true">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{task.taskName}} <span class="pull-right">
+			<button class="btn btn-success btn-xs" ng-show="isAdmin()" data-ng-click="modalAssignSprint('lg',task)">toSprint</button>
+		</span></h3>
+	</div>
+	<div class="panel-body list-group-item-text">
+		<p class="text-muted">{{task.taskDescription}}</p>
+		<span class="label label-default">{{task.storyPoints}}</span>
+		<span class="label label-default">{{task.developer}}</span>
+		<div id="editButton" style="padding-top:10px;">
+			<span class="pull-right">
+				<button class="btn btn-warning btn-xs" ng-show="isAdmin()" data-ng-if="AdminReleaseBacklogCtrl.isTaskIadded(task)" data-ng-click=" AdminDeleteTaskCtrl.deleteTask()">
+					<i class="glyphicon glyphicon-trash"></i>
+				</button>
+			</span>
+			<span class="pull-left">
+				<button class="btn btn-warning btn-xs" ng-show="isAdmin()" data-ng-if="AdminReleaseBacklogCtrl.isTaskIadded(task)" data-ng-click="AdminEditTaskCtrl.editTask()">
+					<i class="glyphicon glyphicon-edit"></i>
+				</button>
+			</span>
+		</div>
+	</div><!--/taskpanel-body-->
+</div>

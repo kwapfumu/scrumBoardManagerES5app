@@ -1,0 +1,21 @@
+<!--sprints table-->
+<div class="row col-sm-6 col-md-6" id="sprintsTable" style="padding-top:5px;" data-ng-cloak>
+  <!-- to be populated by Angular-->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Sprints {{sprintNumbers[0]}}</th>
+        <th>Start date</th>
+        <th>End date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="task in SprintsCtrl.tasks | orderBy:'+task._id.sprintNumber':true">
+        <td data-ng-click="toggleContent()">{{task._id.sprintNumber}}</td>
+        <td>{{task._id.startDate | date:"dd MMM yy"}}</td>
+        <td>{{task._id.endDate | date:"dd MMM yy"}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- /sprints table    ;loadSprinTasks({sprintNumber:task._id.sprintNumber})-->
