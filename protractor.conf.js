@@ -4,6 +4,14 @@
 'use strict';
 
 exports.config = {
+  //use this if you want to test using protractor protractor.conf.js
+  seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+  //bypass selenium server and connects to chromedriver, ignores seleniumAddress
+  // ---- To connect directly to Drivers ------------------------------------
+  // Boolean. If true, Protractor will connect directly to the browser Drivers
+  // at the locations specified by chromeDriver and firefoxPath. Only Chrome
+  // and Firefox are supported for direct connect.
+  directConnect: true,
   // The timeout for each script run on the browser. This should be longer
   // than the maximum time your application needs to stabilize between tasks.
   allScriptsTimeout: 110000,
@@ -30,9 +38,10 @@ exports.config = {
   // https://code.google.com/p/selenium/wiki/DesiredCapabilities
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
-  capabilities: {
+  /*capabilities: {
     'browserName': 'chrome'
-  },
+  },*/
+  multiCapabilities: [{'browserName': 'firefox'}, {'browserName': 'chrome'}],
 
   // ----- The test framework -----
   //
@@ -45,6 +54,7 @@ exports.config = {
   //
   // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
+    showColors: true,
     defaultTimeoutInterval: 30000
   }
 };

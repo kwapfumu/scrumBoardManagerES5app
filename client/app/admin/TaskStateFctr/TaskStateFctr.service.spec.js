@@ -10,9 +10,15 @@ describe('Service: TaskStateFctr', function () {
   beforeEach(inject(function (_TaskStateFctr_) {
     TaskStateFctr = _TaskStateFctr_;
   }));
-
-  it('should do something', function () {
-    expect(!!TaskStateFctr).toBe(true);
+  /*beforeEach(inject(function($injector) {
+      TaskStateFctr = $injector.get('TaskStateFctr');
+    }));*/
+    //testing if getStates method is defined
+  it('should have a getStates method defined', function () {
+    expect(TaskStateFctr.getStates).toBeDefined();
   });
-
+  //testing if getStates returns is an array of length 3
+  it('should have a getStates method that returns 3 element', function () {
+    expect(TaskStateFctr.getStates.length).toEqual(3);
+  });
 });

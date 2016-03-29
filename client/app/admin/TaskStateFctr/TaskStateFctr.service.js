@@ -3,6 +3,7 @@
 
   angular.module('scrumBoardEs5AppApp')
       .factory('TaskStateFctr', TaskStateFctr);
+
     TaskStateFctr.$inject = [];
 
     function TaskStateFctr() {

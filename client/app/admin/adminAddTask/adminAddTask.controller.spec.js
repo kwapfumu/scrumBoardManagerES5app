@@ -15,7 +15,8 @@ describe('Controller: AdminAddTaskCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  //testing if the scope receives states...
+  it('should set the scope property states element to be 3', function(){
+    expect(scope.states.length).toBe(3);
   });
 });

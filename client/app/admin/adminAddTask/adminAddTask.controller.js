@@ -3,12 +3,12 @@
 
   angular.module('scrumBoardEs5AppApp')
     .controller('AdminAddTaskCtrl', AdminAddTaskCtrl);
-      AdminAddTaskCtrl.$inject = ['$scope', '$state', 'taskStateFctr', 'TasksFctr','NotifyFctr'];
+      AdminAddTaskCtrl.$inject = ['$scope', '$state', 'TaskStateFctr', 'TasksFctr','NotifyFctr'];
 
-      function AdminAddTaskCtrl($scope, $state, taskStateFctr, TasksFctr, NotifyFctr) {
+      function AdminAddTaskCtrl($scope, $state, TaskStateFctr, TasksFctr, NotifyFctr) {
         $scope.textPattern = new RegExp('^[a-z]');
         //dynamically loads the state options fron the factory
-        $scope.states = taskStateFctr.getStates();
+        $scope.states = TaskStateFctr.getStates();
         //instantiate a resource class
         $scope.taskResrcInstance = new TasksFctr();
         //closes the form

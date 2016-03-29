@@ -48,7 +48,7 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
-    
+
 
     // list of files / patterns to exclude
     exclude: [],
@@ -73,7 +73,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome','ChromeCanary','PhantomJS'],
 
 
     // Continuous Integration mode
