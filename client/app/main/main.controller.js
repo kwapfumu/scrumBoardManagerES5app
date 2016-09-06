@@ -1,27 +1,37 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+  angular.module('scrumBoardEs5AppApp')
+    .controller('MainCtrl', MainCtrl);
+    MainCtrl.$inject = ['$scope', '$http', 'socket'];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    function MainCtrl($scope, $http, socket) {
+      var mainVm = this;
+      mainVm.awesomeThings = [];
+      mainVm.addThing = addThing;
+      mainVm.deleteThing = deleteThing;
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
+      $http.get('/api/things').success(function(awesomeThings) {
+        mainVm.awesomeThings = awesomeThings;
+        socket.syncUpdates('thing', mainVm.awesomeThings);
+      });
+
+      function addThing() {
+        if(mainVm.newThing === '') {
+          return;
+        }else{
+          $http.post('/api/things', { name: mainVm.newThing });
+          mainVm.newThing = '';
+        }
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
+      function deleteThing(thing) {
+        $http.delete('/api/things/' + thing._id);
+      }
 
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-  });
+      $scope.$on('$destroy', function () {
+        socket.unsyncUpdates('thing');
+      });
+    }
+
+})();

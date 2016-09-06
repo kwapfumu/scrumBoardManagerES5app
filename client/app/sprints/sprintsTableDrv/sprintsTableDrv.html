@@ -1,21 +1,20 @@
-<!--sprints table-->
-<div class="row col-sm-6 col-md-6" id="sprintsTable" style="padding-top:5px;" data-ng-cloak>
+<div class="row col-xs-6 col-sm-6 col-md-6 col-lg-6" id="sprintsTable" ng-cloak>
   <!-- to be populated by Angular-->
-  <table class="table table-striped">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sprints {{sprintNumbers[0]}}</th>
+        <th>Sprints</th>
         <th>Start date</th>
         <th>End date</th>
       </tr>
     </thead>
     <tbody>
-      <tr data-ng-repeat="task in SprintsCtrl.tasks | orderBy:'+task._id.sprintNumber':true">
-        <td data-ng-click="toggleContent()">{{task._id.sprintNumber}}</td>
-        <td>{{task._id.startDate | date:"dd MMM yy"}}</td>
-        <td>{{task._id.endDate | date:"dd MMM yy"}}</td>
+      <tr ng-repeat="sprint in sprintsCtrl.sprints | orderBy:'+ sprint.sprintNumber'">
+        <td><a ui-sref="admin.sprints.aSprint"
+          ng-click="sprintsCtrl.loadSprintTasks({sprintNumber:sprint.sprintNumber});sprintsCtrl.toggleContent();">{{sprint.sprintNumber}}</a></td>
+        <td>{{sprint.startDate | date:"dd MMM yy"}}</td>
+        <td>{{sprint.endDate | date:"dd MMM yy"}}</td>
       </tr>
     </tbody>
   </table>
 </div>
-<!-- /sprints table    ;loadSprinTasks({sprintNumber:task._id.sprintNumber})-->

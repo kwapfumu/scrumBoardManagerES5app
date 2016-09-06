@@ -2,7 +2,7 @@
 describe('admin routes testing', function () {
 
   beforeEach(module('scrumBoardEs5AppApp'));
-  
+
   var AdminCtrl, scope, state;
 
   // Initialize the controller and a mock scope
@@ -18,7 +18,7 @@ describe('admin routes testing', function () {
     expect(state.current.name).toEqual('admin');
   });
   //tests the admin templateurl
-  it('state templateUrl should be admin.html',inject(function($rootScope, $state) {
+  it('state templateUrl should be admin.html', inject(function($rootScope, $state) {
     $rootScope.$apply();
     expect($state.current.templateUrl).toEqual('admin.html');
   }));

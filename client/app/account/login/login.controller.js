@@ -1,29 +1,39 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
-    $scope.errors = {};
+  angular.module('scrumBoardEs5AppApp')
+  .controller('LoginCtrl', LoginCtrl);
 
-    $scope.login = function(form) {
-      $scope.submitted = true;
+  LoginCtrl.$inject = ['$scope', 'Auth', '$location', '$window'];
 
+  function LoginCtrl($scope, Auth, $location, $window) {
+    var loginVm = this;
+    loginVm.user = {};
+    loginVm.errors = {};
+
+    loginVm.login = login;
+    loginVm.loginOauth = loginOauth;
+
+    function login(form) {
+      loginVm.submitted = true;
       if(form.$valid) {
         Auth.login({
-          email: $scope.user.email,
-          password: $scope.user.password
+          email: loginVm.user.email,
+          password: loginVm.user.password
         })
         .then( function() {
           // Logged in, redirect to home
           $location.path('/');
         })
         .catch( function(err) {
-          $scope.errors.other = err.message;
+          loginVm.errors.other = err.message;
         });
       }
-    };
+    }
 
-    $scope.loginOauth = function(provider) {
+    function loginOauth(provider) {
       $window.location.href = '/auth/' + provider;
-    };
-  });
+    }
+  }
+
+})();

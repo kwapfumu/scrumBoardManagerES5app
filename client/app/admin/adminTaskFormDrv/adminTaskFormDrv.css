@@ -1,0 +1,15 @@
+.error-message {
+  padding:3px;
+  color: white;
+  background-color: #524137;
+  border:1px solid #524137;
+  border-radius:10px;
+}
+input.ng-dirty.ng-invalid {
+  margin-bottom:5px;
+  border-color: red;
+}
+textarea.ng-dirty.ng-invalid {
+  margin-bottom:5px;
+  border-color: red;
+}

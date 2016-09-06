@@ -1,10 +1,14 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-  .config(function ($stateProvider) {
+  angular.module('scrumBoardEs5AppApp')
+  .config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-      .state('about', {
-        url: '/about',
-        templateUrl: 'app/about/about.html'        
-      });
-  });
+    .state('about', {
+      url: '/about',
+      templateUrl: 'app/about/about.html'
+    });
+    
+  }]);
+
+})();

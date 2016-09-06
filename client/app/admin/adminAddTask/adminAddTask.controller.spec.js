@@ -10,6 +10,7 @@ describe('Controller: AdminAddTaskCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    //creates a new instance of this controller TODO: inject TasksFctr
     AdminAddTaskCtrl = $controller('AdminAddTaskCtrl', {
       $scope: scope
     });
@@ -18,5 +19,9 @@ describe('Controller: AdminAddTaskCtrl', function () {
   //testing if the scope receives states...
   it('should set the scope property states element to be 3', function(){
     expect(scope.states.length).toBe(3);
+  });
+  //testing if the save button is set to "Save"
+  it('should set the scope property taskFormButtonText to Save', function(){
+    expect(scope.taskFormButtonText).toBe('Save');
   });
 });

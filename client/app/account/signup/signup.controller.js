@@ -1,37 +1,46 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {};
-    $scope.errors = {};
+  angular.module('scrumBoardEs5AppApp')
+    .controller('SignupCtrl', SignupCtrl);
 
-    $scope.register = function(form) {
-      $scope.submitted = true;
+    SignupCtrl.$inject = ['$scope', 'Auth', '$location', '$window'];
 
-      if(form.$valid) {
-        Auth.createUser({
-          name: $scope.user.name,
-          email: $scope.user.email,
-          password: $scope.user.password
-        })
-        .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
-        })
-        .catch( function(err) {
-          err = err.data;
-          $scope.errors = {};
+    function SignupCtrl($scope, Auth, $location, $window) {
+      var signupVm = this;
+      signupVm.user = {};
+      signupVm.errors = {};
+      signupVm.register = register;
+      signupVm.loginOauth = loginOauth;
 
-          // Update validity of form fields that match the mongoose errors
-          angular.forEach(err.errors, function(error, field) {
-            form[field].$setValidity('mongoose', false);
-            $scope.errors[field] = error.message;
+      function register(form) {
+        signupVm.submitted = true;
+        if(form.$valid) {
+          Auth.createUser({
+            name: signupVm.user.name,
+            email: signupVm.user.email,
+            password: signupVm.user.password
+          })
+          .then( function() {
+            // Account created, redirect to home
+            $location.path('/');
+          })
+          .catch( function(err) {
+            err = err.data;
+            signupVm.errors = {};
+
+            // Update validity of form fields that match the mongoose errors
+            angular.forEach(err.errors, function(error, field) {
+              form[field].$setValidity('mongoose', false);
+              signupVm.errors[field] = error.message;
+            });
           });
-        });
+        }
       }
-    };
 
-    $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
-    };
-  });
+      function loginOauth(provider) {
+        $window.location.href = '/auth/' + provider;
+      }
+    }
+
+})();

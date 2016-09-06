@@ -1,8 +1,9 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-.config(['$stateProvider', function ($stateProvider) {
-  $stateProvider
+  angular.module('scrumBoardEs5AppApp')
+  .config(['$stateProvider', function ($stateProvider) {
+    $stateProvider
     .state('releaseBacklog', {
       url: '/releaseBacklog',
       abstract:true,
@@ -28,4 +29,5 @@ angular.module('scrumBoardEs5AppApp')
       url:'/currentSprint',
       templateUrl:'app/sprints/sprintPanelDrv/sprintPanelDrv.html'
     });
-}]);
+  }]);
+})();

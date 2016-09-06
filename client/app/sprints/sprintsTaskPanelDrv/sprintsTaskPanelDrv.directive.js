@@ -1,14 +1,19 @@
-'use strict';
+(function(){
+  'use strict';
+  /**
+    @name sprintsTaskPanelDrv
+  */
+  angular.module('scrumBoardEs5AppApp')
+  .directive('sprintsTaskPanelDrv', sprintsTaskPanelDrvFx);
 
-angular.module('scrumBoardEs5AppApp')
-.directive('sprintsTaskPanelDrv', sprintsTaskPanelDrvFx);
+  function sprintsTaskPanelDrvFx() {
+    return {
+      restrict: 'EA',
+      templateUrl: 'app/sprints/sprintsTaskPanelDrv/sprintsTaskPanelDrv.html',
+      transclude:true,
+      link: function (scope, element, attrs) {
+      }
+    };
+  }
 
-function sprintsTaskPanelDrvFx() {
-  return {
-    templateUrl: 'app/sprints/sprintsTaskPanelDrv/sprintsTaskPanelDrv.html',
-    restrict: 'EA',
-    transclude:true,
-    link: function (scope, element, attrs) {
-    }
-  };
-}
+})();

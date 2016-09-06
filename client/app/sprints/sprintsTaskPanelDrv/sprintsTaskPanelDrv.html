@@ -1,13 +1,12 @@
-<div class="panel panel-default col-xs-5 col-sm-5 placeholder taskPanelExtra-space"
-style="padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px;margin:5px;"
-data-ng-repeat="task in SprintsCtrl.tasksBySprint | filter:searchText | orderBy:'-task.storyPoints':true">
-	<div class="panel-heading">
-		<h3 class="panel-title">{{task.taskName}}</h3>
-	</div>
-	<div class="panel-body list-group-item-text">
-		<p class="text-muted">{{task.taskDescription}}</p>
-		<span class="label label-default">{{task.storyPoints}}</span>
-		<span class="label label-default">{{task.developer}}</span>
-		<span class="label label-default">{{task.state}}</span>
-	</div><!--/taskpanel-body-->
+<div class="panel panel-default col-xs-5 col-sm-5 placeholder taskPanelExtra-space" id="sprintsTaskPanel"
+ng-repeat="task in 'sprintsCtrl.tasksBySprint || currentSprintCtrl.tasksBySprint' | orderBy:'-task.storyPoints'">
+<div class="panel-heading">
+	<h3 class="panel-title">{{task.taskName}}</h3>
+</div>
+<div class="panel-body list-group-item-text">
+	<p class="text-muted">{{task.taskDescription}}</p>
+	<span class="label label-default">{{task.storyPoints}}</span>
+	<span class="label label-default">{{task.developer}}</span>
+	<span class="label label-default">{{task.state}}</span>
+</div><!--/taskpanel-body-->
 </div>

@@ -16,9 +16,9 @@
     });
 
     //clicks About link
-    it('should click on About link and redirects to About page', function(){
+    /*it('should click on About link and redirects to About page', function(){
       main_page.clickAbout();
-    });
+    });*/
     //clicks Signup link
     it('should click on Signup link and redirects to login page', function(){
       main_page.clickSignup();

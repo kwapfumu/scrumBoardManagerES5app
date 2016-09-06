@@ -1,24 +1,28 @@
-<div class="panel panel-default col-xs-6 col-sm-2 placeholder taskPanelExtra-space" id="taskPanel"
-data-ng-repeat="task in tasks | filter:searchText | orderBy:'-task.taskName':true">
+<div class="panel panel-default col-xs-6 col-sm-3 col-md-3 col-lg-3 placeholder taskPanelExtra-space"
+id="taskPanel" ng-repeat="task in releaseBacklogCtrl.tasks | orderBy:'-task.taskName'">
 	<div class="panel-heading">
-		<h3 class="panel-title">{{task.taskName}} <span class="pull-right">
-			<button class="btn btn-success btn-xs" ng-show="isAdmin()" data-ng-click="modalAssignSprint('lg',task)">toSprint</button>
-		</span></h3>
+		<h3 class="panel-title">{{task.taskName}} <!--<span class="pull-right">
+			<button class="btn btn-success btn-xs" ng-show="adminReleaseBacklogCtrl.isAdmin()"
+			ng-click="adminReleaseBacklogCtrl.modalAssignSprint('lg',task)">toSprint</button>
+		</span>--></h3>
 	</div>
 	<div class="panel-body list-group-item-text">
 		<p class="text-muted">{{task.taskDescription}}</p>
 		<span class="label label-default">{{task.storyPoints}}</span>
 		<span class="label label-default">{{task.developer}}</span>
-		<div id="editButton" style="padding-top:10px;">
+		<div id="editNDeleteButtonRow" ng-controller="AdminReleaseBacklogCtrl as adminReleaseBacklogCtrl">
 			<span class="pull-right">
-				<button class="btn btn-warning btn-xs" ng-show="isAdmin()" data-ng-if="AdminReleaseBacklogCtrl.isTaskIadded(task)" data-ng-click=" AdminDeleteTaskCtrl.deleteTask()">
+				<button class="btn btn-warning btn-xs" ng-show="adminReleaseBacklogCtrl.isAdmin()"
+				ng-class="{active: adminReleaseBacklogCtrl.isActive('/admin')}"
+				ng-click="adminReleaseBacklogCtrl.deleteTask(task)">
 					<i class="glyphicon glyphicon-trash"></i>
 				</button>
 			</span>
-			<span class="pull-left">
-				<button class="btn btn-warning btn-xs" ng-show="isAdmin()" data-ng-if="AdminReleaseBacklogCtrl.isTaskIadded(task)" data-ng-click="AdminEditTaskCtrl.editTask()">
+			<span class="pull-left"><!--ng-if="AdminReleaseBacklogCtrl.isTaskIadded(task)""-->
+				<a class="btn btn-warning btn-xs" ng-show="adminReleaseBacklogCtrl.isAdmin()"
+				ng-class="{active: adminReleaseBacklogCtrl.isActive('/admin')}" ui-sref="admin.editTask({id:task._id})">
 					<i class="glyphicon glyphicon-edit"></i>
-				</button>
+				</a>
 			</span>
 		</div>
 	</div><!--/taskpanel-body-->

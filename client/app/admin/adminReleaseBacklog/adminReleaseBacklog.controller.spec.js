@@ -1,5 +1,6 @@
 'use strict';
-
+//most of the features of this controller are user interactions tested
+//using protractor in e2e files i.e for tests regarding this part check e2e files
 describe('Controller: AdminReleaseBacklogCtrl', function () {
 
   // load the controller's module

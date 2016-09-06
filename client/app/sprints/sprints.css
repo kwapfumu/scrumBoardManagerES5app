@@ -1,0 +1,34 @@
+.page-header{
+  margin-top:5px;
+}
+.ngViewSprintTableRelativeContainer {
+  position: relative;  
+  /*height: 300px;*/
+}
+.ngViewSprintPanelContainer {
+  position: absolute;
+  width: 500px;
+  display: block;
+}
+.ngViewSprintPanelContainer.ng-enter,.ngViewSprintPanelContainer.ng-leave {
+  -webkit-transition: 1800ms linear all;
+  transition: 1800ms linear all;
+}
+/*This animation is defined to the new view coming from 500 px from the right and
+animating until the position on the x-axis is 0, leaving the view in the left corner.
+The leaving view goes from the initial position until it is at -1000 px on the x-axis.
+Then, it leaves the DOM. This animation creates a sliding effect; the leaving view
+leaves faster as it has to move double the distance of the entering view in the same
+animation duration.*/
+.ngViewSprintPanelContainer.ng-enter {
+  transform: translateX(500px);
+}
+.ngViewSprintPanelContainer.ng-enter-active {
+  transform: translateX(250px);
+}
+.ngViewSprintPanelContainer.ng-leave {
+  transform: translateX(250px);
+}
+.ngViewSprintPanelContainer.ng-leave-active {
+  transform: translateX(500px);
+}

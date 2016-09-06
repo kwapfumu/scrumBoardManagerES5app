@@ -1,21 +1,31 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('scrumBoardEs5AppApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth) {
-    $scope.errors = {};
+  angular.module('scrumBoardEs5AppApp')
+    .controller('SettingsCtrl', SettingsCtrl);
 
-    $scope.changePassword = function(form) {
-      $scope.submitted = true;
-      if(form.$valid) {
-        Auth.changePassword( $scope.user.oldPassword, $scope.user.newPassword )
-        .then( function() {
-          $scope.message = 'Password successfully changed.';
-        })
-        .catch( function() {
-          form.password.$setValidity('mongoose', false);
-          $scope.errors.other = 'Incorrect password';
-          $scope.message = '';
-        });
-      }
-		};
-  });
+    SettingsCtrl.$inject = ['$scope', 'User', 'Auth'];
+
+    function SettingsCtrl($scope, User, Auth) {
+      var settingsVm = this;
+      settingsVm.errors = {};
+      settingsVm.changePassword = changePassword;
+
+      function changePassword(form) {
+        settingsVm.submitted = true;
+        if(form.$valid) {
+          Auth.changePassword( settingsVm.user.oldPassword, settingsVm.user.newPassword )
+          .then( function() {
+            settingsVm.message = 'Password successfully changed.';
+          })
+          .catch( function() {
+            form.password.$setValidity('mongoose', false);
+            settingsVm.errors.other = 'Incorrect password';
+            settingsVm.message = '';
+          });
+        }
+  		}
+
+    }
+
+});

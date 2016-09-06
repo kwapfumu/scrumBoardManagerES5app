@@ -12,7 +12,7 @@
     })
     .state('admin.releaseBacklog',{
       url:'/tasks',
-      controller: 'AdminReleaseBacklogCtrl',
+      controller:'ReleaseBacklogCtrl',
       templateUrl:'app/releaseBacklog/backlogPanelDrv/backlogPanelDrv.html'
     })
     .state('admin.viewAllUsers',{
@@ -27,17 +27,17 @@
     })
     .state('admin.aTask',{
       url:'/tasks/:id',
-      controller: 'PostDetailsCtrl',
-      templateUrl:'app/releaseBacklog/taskDrv/taskDrv.html'
+      controller: 'TaskDetailsCtrl',
+      templateUrl:'app/releaseBacklog/taskDetailsDrv/taskDetailsDrv.html'
     })
     .state('admin.editTask',{
       url:'/tasks/:id/edit',
-      controller: 'AdminUpdatePostCtrl',
-      templateUrl:'app/admin/adminUpdatePostDrv/adminUpdatePostDrv.html'
+      controller:'AdminEditTaskCtrl',
+      templateUrl:'app/admin/editTaskFormDrv/editTaskFormDrv.html'
     })
     .state('admin.deleteTask',{
       url:'/tasks/:id/delete',
-      controller: 'AdminDeletePostCtrl',
+      controller:'AdminDeleteTaskCtrl',
       templateUrl:'app/adminUpdateDirective/adminUpdateDirective.html'
     })
     .state('admin.sprints',{
@@ -45,10 +45,16 @@
       controller: 'SprintsCtrl',
       templateUrl:'app/sprints/sprints.html'
     })
+    .state('admin.sprints.aSprint',{
+      url:'/sprints/:sprintNumber',
+      controller: 'SprintsCtrl',
+      templateUrl:'app/sprints/sprintPanelDrv/sprintPanelDrv.html'
+    })
     .state('admin.currentSprint',{
       url:'/currentSprint',
-      templateUrl:'app/sprints/sprintPanelDrv/sprintPanelDrv.html'
+      controller: 'SprintsCtrl',
+      templateUrl:'app/sprints/currentSprintDrv/currentSprintDrv.html'
     });
   }]);
-  
+
 })();

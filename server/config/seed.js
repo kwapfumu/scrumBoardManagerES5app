@@ -1,12 +1,13 @@
 /**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
- */
+* Populate DB with sample data on server start
+* to disable, edit config/environment/index.js, and set `seedDB: false`
+*/
 
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Task = require('../api/task/task.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -30,6 +31,52 @@ Thing.find({}).remove(function() {
   });
 });
 
+Task.find({}).remove(function() {
+  Task.create({
+    taskName:"task 01",
+    taskDescription:"pfffffff",
+    storyPoints:1,
+    developer:"pfumu",
+    sprintInfo:{sprintNumber:1, startDate:null, endDate:null},
+    state:"todo"
+  },
+  {
+    taskName:"task 02",
+    taskDescription:"pfffffff",
+    storyPoints:2,
+    developer:"pfumu",
+    sprintInfo:{sprintNumber:2, startDate:null, endDate:null},
+    state:"todo"
+  },
+  {
+    taskName:"task 03",
+    taskDescription:"pfffffff",
+    storyPoints:6,
+    developer:"pfumu",
+    sprintInfo:{sprintNumber:3, startDate:null, endDate:null},
+    state:"todo"
+  },
+  {
+    taskName:"task 04",
+    taskDescription:"pfffffff",
+    storyPoints:1,
+    developer:"pfumu",
+    sprintInfo:{sprintNumber:1, startDate:null, endDate:null},
+    state:"todo"
+  },
+  {
+    taskName:"task 05",
+    taskDescription:"pfffffff",
+    storyPoints:5,
+    developer:"pfumu",
+    sprintInfo:{sprintNumber:3, startDate:null, endDate:null},
+    state:"todo"
+  }, function() {
+    console.log('finished populating tasks');
+  }
+);
+});
+
 User.find({}).remove(function() {
   User.create({
     provider: 'local',
@@ -43,7 +90,7 @@ User.find({}).remove(function() {
     email: 'admin@admin.com',
     password: 'admin'
   }, function() {
-      console.log('finished populating users');
-    }
-  );
+    console.log('finished populating users');
+  }
+);
 });

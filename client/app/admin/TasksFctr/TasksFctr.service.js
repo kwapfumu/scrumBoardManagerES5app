@@ -1,17 +1,30 @@
 (function(){
   'use strict';
-
+  /**
+    @name TasksFctr
+    @desc factory returning all task related methods
+  */
   angular.module('scrumBoardEs5AppApp')
-    .factory('TasksFctr', TasksFctr);
+  .factory('TasksFctr', TasksFctr);
 
-    TasksFctr.$inject = ['$resource'];
+  TasksFctr.$inject = ['$resource'];
 
-    function TasksFctr($resource) {    
-      return $resource('/admin/tasks/:id', { id: '@_id' },
-      {
-        update: {
-          method: 'PUT' // this method issues a PUT request
-        }
-      });
-    }
+  function TasksFctr($resource) {
+    return $resource('/admin/tasks', {id:'@_id'},
+    {
+      get: {
+        method: 'GET',
+        params:{id:'@_id'}
+      },
+      save:{
+        method:'POST',
+        url:'/admin/tasks/new'
+      },
+      update: {
+        method: 'PUT',
+        params:{id:'@_id'},
+        url:'/admin/tasks/:id/edit'
+      }
+    });
+  }
 })();

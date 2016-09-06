@@ -1,3 +1,9 @@
+#loginPage{
+  color:white;
+}
+#socialButtons{
+  margin-top:15px;
+}
 .btn-facebook {
   color: #fff;
   background-color: #3B5998;
@@ -20,4 +26,9 @@
   color: #fff;
   background-color: #fafafa;
   border-color: #ccc;
+}
+.inputBoxStyles{
+  background-color: #7F340E;
+  color:#C9CD97;
+  border-color:#C1672D;
 }

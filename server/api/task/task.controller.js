@@ -1,5 +1,4 @@
-(function(){
-  /*TODO: clean up all these methods!!! */
+
   'use strict';
 
   var _ = require('lodash');
@@ -21,8 +20,9 @@
   		if (err) {
         return handleError(res, err);
   		} else {
-        //res.status(200).json(tasks);
-  			res.jsonp(tasks);
+        console.log(tasks);
+        return res.status(200).json(tasks);
+  			//res.jsonp(tasks);
   		}
   	});
   };
@@ -42,7 +42,7 @@
   exports.taskByID = function(req, res, next, id) {
   	Task.findById(id).populate('user', 'displayName').exec(function(err, task) {
   		if (err) return next(err);
-  		if (! task) return next(new Error('Failed to load Task ' + id));
+  		if (!task) return next(new Error('Failed to load Task ' + id));
   		req.task = task ;
   		next();
   	});
@@ -50,22 +50,25 @@
 
   // Creates a new task in the DB.
   exports.create = function(req, res) {
-    /*add the user object to "user" field of creating document (req.body.user = req.user). Because "req.user" already contains the user object,
-      just set it to Thing.create argument ("req.body") to save user.*/
-      /*req.body.user = req.user;
-      Task.create(req.body, function(err, task) {
-        if(err) { return handleError(res, err); }
-        return res.status(201).json(task);
-      });*/
-      var task = new Task(req.body);
+      //passes as parameter req.body i.e what's inside taskResInstance in adminCreateTaskCtrl
+      var task = new Task({
+        projectName: req.body.projectName,
+        taskName: req.body.taskName,
+        taskDescription: req.body.taskDescription,
+        storyPoints: req.body.storyPoints,
+        developer: req.body.developer,
+        backlogName: req.body.backlogName,
+        state: req.body.state,
+        sprintInfo: req.body.sprintInfo
+      });
+      //adds the currently logged in user(req.body) to task object
     	task.user = req.user;
-
-    	task.save(function(err) {
+    	task.save(function(err,task) {
     		if (err) {
     			 return handleError(res, err);
     		} else {
-          return res.status(201).json(task);
-    			//res.jsonp(task);
+          return res.status(200).jsonp(task);
+    			//res.json(task);
     		}
     	});
     };
@@ -139,4 +142,3 @@
       return entity;
     }
   }
-})();

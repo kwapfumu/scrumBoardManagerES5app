@@ -1,10 +1,21 @@
+body{
+  background-image: url('../../assets/images/aboutbckgimg.jpg');
+  height:auto;
+  width:auto;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.8;
+}
 .thing-form {
     margin: 20px 0;
 }
 
 #banner {
     border-bottom: none;
-    margin-top: -20px;
+    margin-top: -50px;
+    background: url('');
 }
 
 #banner h1 {
@@ -14,21 +25,24 @@
 }
 
 .hero-unit {
+
     position: relative;
     padding: 30px 15px;
     color: #F5F5F5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
+    background: transparent;
 }
 
 .footer {
     text-align: center;
     padding: 30px 0;
     margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
+
 }
 
 .navbar-text {
     margin-left: 15px;
 }
+.page-header{color:white;}
+.inputBoxStyles{background-color: #7F340E;}

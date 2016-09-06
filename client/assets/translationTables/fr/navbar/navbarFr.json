@@ -1,0 +1,17 @@
+var translations = {
+  "About":"A propos",
+  "Signup":"S'enregister",
+  "Login":"S'identifier",
+  "Settings": "Parametres",
+  "scrumBoardApp":
+    {"About":
+      {"AboutTxt": "This was a project implemented by pfumu in her journey to grasping the
+        MEAN stack and tailoring UIs using Angular 1.X i.e.
+        grasping and hopefully mastering Angular 1.X,
+        improving her javascript ES5 functional programming skills,
+        practising unit testing with jasmine and functional testing with Protractor,...
+
+        The source code can be found here"
+      }
+    }
+}

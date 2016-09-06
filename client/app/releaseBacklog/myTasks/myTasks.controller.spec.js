@@ -15,7 +15,7 @@ describe('Controller: MyTasksCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  it('should test if isSprintPanelVisible is true by default', function () {
+    expect(scope.isSprintPanelVisible).toBeTruthy();
   });
 });

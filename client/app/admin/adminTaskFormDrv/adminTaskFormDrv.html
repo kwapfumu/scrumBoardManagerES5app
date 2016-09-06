@@ -1,0 +1,118 @@
+
+    <div class="form-group">
+      <div ng-show="error" class="text-center text-danger">
+        <div class="alert alert-danger" role="alert">
+          <strong ng-bind="error"></strong>
+        </div>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.projectName.$dirty && adminTaskForm.projectName.$invalid}">
+      <div class="col-sm-10">
+        <input type="text" name="projectName" ng-model="adminAddTaskCtrl.task.projectName"
+        class="form-control" id="projectName"
+        placeholder="project name" ng-required="true" ng-minlength="7" ng-maxlength="20"
+        ng-pattern="textPattern">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.projectName.$dirty && adminTaskForm.projectName.$error.required">projectName is mandatory</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.projectName.$dirty && adminTaskForm.projectName.$error.pattern">projectName should be a text</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.projectName.$dirty && adminTaskForm.projectName.$error.minlength">projectName should be at least 7 characters long</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.projectName.$dirty && adminTaskForm.projectName.$error.maxlength">projectName should be max 10 characters long</span>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.taskName.$dirty && adminTaskForm.taskName.$invalid}">
+      <div class="col-sm-10">
+        <input type="text" name="taskName" ng-model="adminAddTaskCtrl.task.taskName"
+        class="form-control" id="taskName"
+        placeholder="task name" ng-required="true" ng-minlength="7" ng-maxlength="10" ng-pattern="textPattern">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.taskName.$dirty && adminTaskForm.taskName.$error.required">Taskname is mandatory</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.taskName.$dirty && adminTaskForm.taskName.$error.pattern">Taskname should be a text</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.taskName.$dirty && adminTaskForm.taskName.$error.minlength">Taskname should be at least 7 characters long</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.taskName.$dirty && adminTaskForm.taskName.$error.maxlength">Taskname should be max 10 characters long</span>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.taskDescription.$dirty && adminTaskForm.taskDescription.$invalid}">
+      <div class="col-sm-10">
+        <textarea name="taskDescription" ng-model="adminAddTaskCtrl.task.taskDescription" class="form-control" rows="2"
+        id="taskDescription" placeholder="taskDescription" ng-required="true"></textarea>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.taskDescription.$dirty && adminTaskForm.taskDescription.$invalid">You need to add the task description!</span>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error':adminTaskForm.storyPoints.$dirty && adminTaskForm.storyPoints.$invalid}">
+      <div class="col-sm-10">
+        <input type="number" name="storyPoints" ng-model="adminAddTaskCtrl.task.storyPoints" class="form-control"
+        id="storyPoints" placeholder="storyPoints" ng-required="true">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.storyPoints.$dirty && adminTaskForm.storyPoints.$invalid">storyPoints is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error':adminTaskForm.developer.$dirty && adminTaskForm.developer.$invalid}">
+      <div class="col-sm-10">
+        <input name="developer" type="text" ng-model="adminAddTaskCtrl.task.developer" class="form-control" id="developer"
+        placeholder="developer" ng-required="true" ng-minlength="3" ng-maxlength="10" ng-pattern="textPattern">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.developer.$dirty && adminTaskForm.developer.$invalid">developer name is mandatory</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.developer.$dirty && adminTaskForm.developer.$error.pattern">developer should be a text</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.developer.$dirty && adminTaskForm.developer.$error.minlength">developer should be at least 3 characters long</span>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.developer.$dirty && adminTaskForm.developer.$error.maxlength">developer should be max 10 characters long</span>
+      </div>
+    </div>
+    <!--<div class="form-group" ng-class="{'has-error':adminTaskForm.backlogName.$dirty && adminTaskForm.backlogName.$invalid}">
+      <input name="backlogName" type="text" data-ng-model="task.backlogName" class="form-control" id="backlogName" placeholder="backlog Name"
+      ng-required="true">
+      <span class="error-message col-md-offset-1 col-lg-offset-1" ng-show="adminTaskForm.backlogName.$dirty && adminTaskForm.backlogName.$invalid">backlogName is mandatory</span>
+    </div>-->
+    <div class="form-group" ng-class="{'has-error':adminTaskForm.state.$dirty && adminTaskForm.state.$invalid}">
+      <div class="controls col-sm-10">
+        <select name="state" ng-model="task.state" class="form-control" id="state"
+        ng-options="state.name for state in adminCtrl.states" ng-required="true">
+          <option value="">-- choose state --</option>
+        </select>
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.state.$dirty && adminTaskForm.state.$invalid">state is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.sprintInfo.sprintNumber.$dirty && adminTaskForm.sprintInfo.sprintNumber.$invalid}">
+      <div class="col-sm-10">
+        <input type="number" name="sprintInfo.sprintNumber" ng-model="adminAddTaskCtrl.task.sprintInfo.sprintNumber"
+        class="form-control" id="sprintNumber" placeholder="sprint number" ng-required="true">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+        ng-show="adminTaskForm.sprintInfo.sprintNumber.$dirty && adminTaskForm.sprintInfo.sprintNumber.$invalid">sprintNumber is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.sprintInfo.startDate.$dirty && adminTaskForm.sprintInfo.startDate.$invalid}">
+      <div class="col-sm-10">
+        <input type="date" name="sprintInfo.startDate" ng-model="adminAddTaskCtrl.task.sprintInfo.startDate"
+        class="form-control" ng-required="true" id="startDate" placeholder="start date">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+      ng-show="adminTaskForm.sprintInfo.startDate.$dirty && adminTaskForm.sprintInfo.startDate.$invalid">startdate is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group"
+    ng-class="{'has-error':adminTaskForm.sprintInfo.endDate.$dirty && adminTaskForm.sprintInfo.endDate.$invalid}">
+      <div class="col-sm-10">
+        <input type="date" name="sprintInfo.endDate" ng-model="adminAddTaskCtrl.task.sprintInfo.endDate"
+        class="form-control" id="endDate" placeholder="end date" ng-required="true">
+        <span class="error-message col-md-offset-1 col-lg-offset-1"
+      ng-show="adminTaskForm.sprintInfo.endDate.$dirty && adminTaskForm.sprintInfo.endDate.$invalid">endDate is mandatory</span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10">
+      <button type="submit" class="btn btn-warning" ng-disabled="adminTaskForm.$invalid" value="">{{adminAddTaskCtrl.taskFormButtonText || adminEditTaskCtrl.taskFormButtonText}}</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="adminCtrl.cancel()">Cancel</button>
+    </div>

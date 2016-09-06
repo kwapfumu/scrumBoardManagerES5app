@@ -1,47 +1,7 @@
-<section data-ng-controller="AdminEditTaskCtrl">
-  <h4 class="modal-title">Edit: {{task.taskName}}</h4>
-  <form name="updateTaskForm">
-    <div class="form-group">
-      <div data-ng-show="error" class="text-center text-danger">
-        <div class="alert alert-danger" role="alert">
-          <strong data-ng-bind="error"></strong>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <input class="form-control" data-ng-model="task.taskName" required/>
-    </div>
-    <div class="form-group">
-      <input class="form-control" data-ng-model="task.taskDescription" required/>
-    </div>
-    <div class="form-group">
-      <input class="form-control" data-ng-model="task.storyPoints" required/>
-    </div>
-    <div class="form-group">
-      <input class="form-control" data-ng-model="task.developer" required/>
-    </div>
-    <div class="form-group">
-      <input class="form-control" data-ng-model="task.backlogName" required/>
-    </div>
-    <div class="form-group">
-      <div class="controls">
-        <select required data-ng-model="task.state" class="form-control" id="state" data-ng-options="state.name for state in states">
-          <option value="">-- choose state --</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <input type="number" required data-ng-model="task.sprintInfo.sprintNumber" class="form-control" id="sprintNumber" placeholder="sprint number">
-    </div>
-    <div class="form-group">
-      <input type="date" required data-ng-model="task.sprintInfo.startDate" class="form-control" id="startDate" placeholder="start date">
-    </div>
-    <div class="form-group">
-      <input type="date" required data-ng-model="task.sprintInfo.endDate" class="form-control" id="endDate" placeholder="end date">
-    </div>
-    <div class="form-group">
-      <button type="button" class="btn btn-warning" ng-click="AdminEditTaskCtrl.savEditedTask(task);ok()" ng-disabled="updateTaskForm.$invalid">Update</button>
-      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
-    </div>
+<section class="col-xs-8 col-sm-8 col-md-8 col-lg-8"
+ng-controller="AdminEditTaskCtrl as adminEditTaskCtrl">
+  <h4 class="modal-title">Edit: {{adminEditTaskCtrl.task.taskName}}</h4>
+  <form name="adminTaskForm" class="form-horizontal" novalidate ng-submit="adminEditTaskCtrl.savEditedTask(task)">
+    <div admin-task-form-drv states="{{states}}"></div>
   </form>
 </section>

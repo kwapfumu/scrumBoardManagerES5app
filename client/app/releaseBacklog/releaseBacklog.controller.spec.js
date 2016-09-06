@@ -14,8 +14,8 @@ describe('Controller: ReleaseBacklogCtrl', function () {
       $scope: scope
     });
   }));
-
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  //tests if tasks property if an array of length greater than 0
+  it('should tasks property to be an array of length greater than 0', function () {
+    expect(scope.tasks.length).toBeGreaterThan(0);
   });
 });

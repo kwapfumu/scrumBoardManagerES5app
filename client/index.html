@@ -20,17 +20,29 @@
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <link rel="stylesheet" href="app/about/about.css">
+      <link rel="stylesheet" href="app/about/aboutPanelDrv/aboutPanelDrv.css">
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
+      <link rel="stylesheet" href="app/admin/adminReleasebacklogHeaderDrv/adminReleasebacklogHeaderDrv.css">
+      <link rel="stylesheet" href="app/admin/adminTaskFormDrv/adminTaskFormDrv.css">
       <link rel="stylesheet" href="app/admin/assisgnSprintFormDrv/assisgnSprintFormDrv.css">
       <link rel="stylesheet" href="app/admin/createTaskFormDrv/createTaskFormDrv.css">
       <link rel="stylesheet" href="app/admin/editTaskFormDrv/editTaskFormDrv.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/gikonawtv/addressDrv/addressDrv.css">
+      <link rel="stylesheet" href="app/gikonawtv/backgroundVidDrv/backgroundVidDrv.css">
+      <link rel="stylesheet" href="app/gikonawtv/contactDetailsDrv/contactDetailsDrv.css">
+      <link rel="stylesheet" href="app/gikonawtv/gikonawtv.css">
+      <link rel="stylesheet" href="app/gikonawtv/introVidDrv/introVidDrv.css">
+      <link rel="stylesheet" href="app/gikonawtv/numbersDrv/numbersDrv.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/releaseBacklog/backlogPanelDrv/backlogPanelDrv.css">
       <link rel="stylesheet" href="app/releaseBacklog/myTasksDrv/myTasksDrv.css">
       <link rel="stylesheet" href="app/releaseBacklog/releaseBacklog.css">
+      <link rel="stylesheet" href="app/releaseBacklog/searchBoxDrv/searchBoxDrv.css">
+      <link rel="stylesheet" href="app/releaseBacklog/taskDetailsDrv/taskDetailsDrv.css">
       <link rel="stylesheet" href="app/releaseBacklog/taskDrv/taskDrv.css">
+      <link rel="stylesheet" href="app/sprints/currentSprintDrv/currentSprintDrv.css">
       <link rel="stylesheet" href="app/sprints/sprintPanelDrv/sprintPanelDrv.css">
       <link rel="stylesheet" href="app/sprints/sprints.css">
       <link rel="stylesheet" href="app/sprints/sprintsTableDrv/sprintsTableDrv.css">
@@ -66,6 +78,8 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-translate/angular-translate.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -84,24 +98,34 @@
           <!-- injector:js -->
           <script src="app/about/about.controller.js"></script>
           <script src="app/about/about.js"></script>
+          <script src="app/about/aboutPanelDrv/aboutPanelDrv.directive.js"></script>
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/PopUpSrv/PopUpSrv.service.js"></script>
+          <script src="app/admin/SaveOrEditButtonTextFctr/SaveOrEditButtonTextFctr.service.js"></script>
+          <script src="app/admin/SprintNumberFctr/SprintNumberFctr.service.js"></script>
           <script src="app/admin/TaskStateFctr/TaskStateFctr.service.js"></script>
           <script src="app/admin/TasksFctr/TasksFctr.service.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
           <script src="app/admin/adminAddTask/adminAddTask.controller.js"></script>
-          <script src="app/admin/adminAssignSprint/adminAssignSprint.controller.js"></script>
-          <script src="app/admin/adminDeleteTask/adminDeleteTask.controller.js"></script>
           <script src="app/admin/adminEditTask/adminEditTask.controller.js"></script>
           <script src="app/admin/adminReleaseBacklog/adminReleaseBacklog.controller.js"></script>
+          <script src="app/admin/adminReleasebacklogHeaderDrv/adminReleasebacklogHeaderDrv.directive.js"></script>
+          <script src="app/admin/adminTaskFormDrv/adminTaskFormDrv.directive.js"></script>
           <script src="app/admin/assisgnSprintFormDrv/assisgnSprintFormDrv.directive.js"></script>
           <script src="app/admin/createSprint/createSprint.controller.js"></script>
           <script src="app/admin/createTaskFormDrv/createTaskFormDrv.directive.js"></script>
           <script src="app/admin/editTaskFormDrv/editTaskFormDrv.directive.js"></script>
+          <script src="app/gikonawtv/addressDrv/addressDrv.directive.js"></script>
+          <script src="app/gikonawtv/backgroundVidDrv/backgroundVidDrv.directive.js"></script>
+          <script src="app/gikonawtv/contactDetailsDrv/contactDetailsDrv.directive.js"></script>
+          <script src="app/gikonawtv/gikonawtv.controller.js"></script>
+          <script src="app/gikonawtv/gikonawtv.js"></script>
+          <script src="app/gikonawtv/introVidDrv/introVidDrv.directive.js"></script>
+          <script src="app/gikonawtv/numbersDrv/numbersDrv.directive.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/releaseBacklog/NotifyFctr/NotifyFctr.service.js"></script>
@@ -110,8 +134,13 @@
           <script src="app/releaseBacklog/myTasksDrv/myTasksDrv.directive.js"></script>
           <script src="app/releaseBacklog/releaseBacklog.controller.js"></script>
           <script src="app/releaseBacklog/releaseBacklog.js"></script>
+          <script src="app/releaseBacklog/searchBoxDrv/searchBoxDrv.directive.js"></script>
+          <script src="app/releaseBacklog/taskDetails/taskDetails.controller.js"></script>
+          <script src="app/releaseBacklog/taskDetailsDrv/taskDetailsDrv.directive.js"></script>
           <script src="app/releaseBacklog/taskDrv/taskDrv.directive.js"></script>
+          <script src="app/sprints/TasksBySprintNumberFctr/TasksBySprintNumberFctr.service.js"></script>
           <script src="app/sprints/currentSprint/currentSprint.controller.js"></script>
+          <script src="app/sprints/currentSprintDrv/currentSprintDrv.directive.js"></script>
           <script src="app/sprints/sprintPanelDrv/sprintPanelDrv.directive.js"></script>
           <script src="app/sprints/sprints.controller.js"></script>
           <script src="app/sprints/sprints.js"></script>

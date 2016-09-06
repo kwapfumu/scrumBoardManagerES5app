@@ -7,6 +7,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://127.0.0.1:27017/scrumboardes5app'
   },
-
-  seedDB: true
+  //set it to false to keep data in db after restart
+  seedDB: false
 };

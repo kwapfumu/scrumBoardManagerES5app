@@ -22,9 +22,9 @@ var mongoose = require('mongoose');
 module.exports = function(app) {
   var env = app.get('env');
 
-  app.set('views', config.root + '/server/views');
-  app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
+  app.engine('html', require('ejs').renderFile);
+  app.set('views', config.root + '/server/views');
   app.use(compression());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -40,10 +40,10 @@ module.exports = function(app) {
     saveUninitialized: true,
     store: new mongoStore({
       mongooseConnection: mongoose.connection,
-      db: 'scrum-board-es5-app'
+      db: 'scrumboardes5app'
     })
   }));
-  
+
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));

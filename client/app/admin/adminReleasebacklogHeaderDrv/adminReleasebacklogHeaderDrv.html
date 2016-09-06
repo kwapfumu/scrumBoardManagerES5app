@@ -1,0 +1,14 @@
+<ul class="nav navbar-nav navbar-right"
+  ng-controller="AdminReleaseBacklogCtrl as adminReleaseBacklogCtrl">
+  <li>
+    <h3>
+      <!--just used for testing function to loadData from server-->
+      <!--<button type="button" class="btn btn-info btn-xs"
+    ng-click="releaseBacklogCtrl.getTasksUsingTasksFctr()">list tasks</button>-->
+    </h3>
+  </li>
+  <li ng-show="adminReleaseBacklogCtrl.isAdmin()"
+    ng-class="{active: adminReleaseBacklogCtrl.isActive('/admin')}">
+    <h3><a ui-sref="admin.addTask">add task</a></h3>
+  </li>
+</ul>

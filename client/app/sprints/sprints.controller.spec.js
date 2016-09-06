@@ -14,8 +14,8 @@ describe('Controller: SprintsCtrl', function () {
       $scope: scope
     });
   }));
-
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  //tests if sprints property is an array of length greater than 0
+  it('should test if sprints is an array of length greater than 0', function () {
+    expect(scope.sprints.length).toBeGreaterThan(0);
   });
 });

@@ -1,5 +1,6 @@
 {
   "name": "scrum-board-es5-app",
+  "private": true,
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
@@ -89,7 +90,7 @@
   "scripts": {
     "start": "node server/app.js",
     "test": "grunt test",
+    "protractorTests": "protractor protractor.conf.js",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
-  },
-  "private": true
+  }
 }

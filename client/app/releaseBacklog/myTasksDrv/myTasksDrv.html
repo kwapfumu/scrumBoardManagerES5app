@@ -1,1 +1,13 @@
-<div>this is the myTasksDrv directive</div>
+<section ng-controller="MyTasksCtrl as myTasksCtrl">
+  <!-- sprints display area-->
+  <h1 class="page-header">{{myTasksCtrl.getCurrentUser().name}} tasks</h1>
+  <div class="row placeholders">
+    <!-- Sprint Panel Column-->
+    <div sprint-panel-drv></div>
+    <!-- /Sprint Panel Column-->
+    <!-- developer's stats-->
+    <div></div>
+    <!-- developer's stats-->
+  </div>
+  <!-- /sprints display area-->
+</section>

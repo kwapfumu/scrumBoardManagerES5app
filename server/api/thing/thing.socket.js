@@ -1,7 +1,6 @@
 /**
  * Broadcast updates to client when the model changes
  */
-
 'use strict';
 
 var thing = require('./thing.model');

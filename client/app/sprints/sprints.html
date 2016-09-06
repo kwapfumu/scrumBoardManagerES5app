@@ -1,15 +1,13 @@
-<section data-ng-controller="SprintsCtrl">
+<section ng-controller="SprintsCtrl as sprintsCtrl">
   <!-- sprints display area-->
   <h1 class="page-header">All Sprints</h1>
-
   <div class="row placeholders">
-    <!--sprints table-->
-    <div data-sprints-table></div>
-    <!--sprints table-->
-    <!--bySprintNumber view-->
-    <div data-sprint-directive tasksBySprint="loadSprinTasks(sprintNumber)"></div>
-    <!--bySprintNumber view-->
-
+    <!-- sprints table column-->
+    <div sprints-table-drv></div>
+    <!-- /sprints table column-->
+    <!-- Sprint Panel Column-->
+    <div ui-view></div>
+    <!-- /Sprint Panel Column-->
   </div>
-  <!-- sprints display area-->
+  <!-- /sprints display area-->
 </section>

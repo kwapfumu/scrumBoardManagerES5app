@@ -86,9 +86,9 @@ module.exports = function (grunt) {
         files: [
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
-          
+
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
-          
+
           '!{.tmp,<%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
           '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -394,23 +394,15 @@ module.exports = function (grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
-      server: [
-      ],
-      test: [
-      ],
+      server: [],
+      test: [],
       debug: {
-        tasks: [
-          'nodemon',
-          'node-inspector'
-        ],
+        tasks: ['nodemon', 'node-inspector'],
         options: {
           logConcurrentOutput: true
         }
       },
-      dist: [
-        'imagemin',
-        'svgmin'
-      ]
+      dist: ['imagemin', 'svgmin']
     },
 
     // Test settings
@@ -430,12 +422,22 @@ module.exports = function (grunt) {
 
     protractor: {
       options: {
-        configFile: 'protractor.conf.js'
+        configFile: 'protractor.conf.js',
+        keepAlive:true, //if false grunt will stop when test fails
+        noColor:false,
+        args:{}
       },
       chrome: {
         options: {
           args: {
             browser: 'chrome'
+          }
+        }
+      },
+      firefox: {
+        options: {
+          args: {
+            browser: 'firefox'
           }
         }
       }
@@ -469,12 +471,12 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.client %>/index.html': [
                [
-                 
+
                  '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
-                 
-                 '!{.tmp,<%= yeoman.client %>}/app/app.js',               
+
+                 '!{.tmp,<%= yeoman.client %>}/app/app.js',
                  '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
-                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'               
+                 '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
                ]
             ]
         }
